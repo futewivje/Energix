@@ -54,8 +54,12 @@ header ul {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  z-index: 15;
+  z-index: 1;
   pointer-events: none;
+}
+
+.mockup {
+  z-index: 15;
 }
 
 .item .content {
@@ -65,4 +69,122 @@ header ul {
   transform: translate(-50%, -50%);
   text-align: center;
   font-size: 12rem;
+  color: aliceblue;
+  font-weight: bold;
+  font-family: system-ui;
+
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.item {
+  display: none;
+}
+
+.item.active {
+  display: block;
+}
+.item.hidden {
+  display: block;
+  pointer-events: none;
+  background-color: transparent;
+  z-index: 1;
+}
+
+@keyframes toActive {
+  from {
+    top: 100%;
+    opacity: 0;
+  }
+}
+@keyframes toOut {
+  from {
+    top: 50%;
+    opacity: 1;
+  }
+}
+
+.item.active img.fruit {
+  animation: toActive 0.5s ease-in-out 1;
+}
+.item.hidden img.fruit {
+  animation: toOut 0.8s ease-in-out 1;
+  top: -100%;
+  opacity: 0;
+}
+
+.utem.active .content {
+  animation: toActive 0.8s ease-in-out 1;
+}
+.item.hidden .content {
+  opacity: 0;
+}
+
+:root {
+  --width-mockup: calc(371px / 1.5);
+  --height-mockup: calc(673px / 1.5);
+}
+
+.mockup {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  --left: 0%;
+  transform: translate(-50%, -50%);
+  width: var(--width-mockup);
+  height: var(--height-mockup);
+  background: url(mockup.png) 0 0 no-repeat, url(listsoda.jpg) var(--left) 0;
+  background-size: auto 100%;
+  background-blend-mode: multiply;
+  mask-image: url(mockup.png);
+  -webkit-mask-image: url(mockup.png);
+  mask-repeat: no-repeat;
+  -webkit-mask-repeat: no-repeat;
+  mask-size: auto 100%;
+  -webkit-mask-size: auto 100%;
+  transition: background 0.5s;
+}
+.leaves {
+  position: absolute;
+  width: 170px;
+  height: 170px;
+  background-image: url;
+}
+
+.shadow {
+  width: var(--width-mockup); /* Fixed typo */
+  height: 100px;
+  background-color: #0008;
+  border-radius: 50%;
+  position: absolute;
+  top: calc(50% + (var(--height-mockup) / 2));
+  left: 50%;
+  transform: translateX(-50%);
+  filter: blur(20px);
+}
+
+#next,
+#prev {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: #eee5;
+  border: 1px solid #eee9;
+  color: #eee;
+  font-size: x-large;
+  font-weight: bold;
+  font-family: monospace;
+  cursor: pointer;
+  z-index: 15;
+}
+
+#prev {
+  left: 20px;
+}
+
+#next {
+  right: 20px;
 }
