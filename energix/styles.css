@@ -9,7 +9,9 @@ header {
   align-items: center;
   padding: 0 50px;
   box-sizing: border-box;
-  font-family: monospace;
+  font-family: "Times New Roman", Times, serif;
+  text-decoration: none;
+  color: #eee;
   font-weight: bold;
   font-size: large;
   position: relative;
@@ -22,6 +24,16 @@ header ul {
   list-style: none;
   display: flex;
   gap: 20px;
+}
+
+.hi li a {
+  color: white; /* Make the text white */
+  text-decoration: none; /* Remove underline */
+  transition: color 0.3s ease;
+}
+
+.hi li a:hover {
+  color: #ccc; /* Light gray on hover for better visibility */
 }
 
 .carousel {
