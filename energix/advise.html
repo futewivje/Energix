@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Energix - Order</title>
+    <link rel="stylesheet" href="styles4.css" />
+  </head>
+  <body>
+    <header>
+      <div class="logo">Energix</div>
+      <nav>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="product.html">Product</a></li>
+          <li><a href="advise.html">Advise</a></li>
+          <li><a href="order.html">Order</a></li>
+          <li><a href="near.html">Near by</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <div class="banner">
+      <div class="content">
+        <h1>ORDER NOW!</h1>
+        <p>
+          Fuel your energy with <span class="highlight">Energix</span>! 💥
+          Unleash the power — Rise from the ashes! ⚡🔥
+        </p>
+
+        <div class="advice-box">
+          <h2>Leave Your Advice</h2>
+          <textarea
+            id="advice-input"
+            placeholder="Write your advice here..."
+          ></textarea>
+          <button onclick="sendAdvice()">Send</button>
+          <p id="success-message" class="hidden">
+            Advice sent successfully! ✅
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <script src="script2.js"></script>
+  </body>
+</html>

@@ -1,0 +1,136 @@
+/* General Styling */
+body {
+  font-family: "Arial", sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #000;
+  color: #fff;
+  overflow-x: hidden;
+}
+
+/* Header */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 50px;
+  background-color: rgba(0, 0, 0, 0.9);
+  box-shadow: 0 0 20px rgba(255, 0, 0, 0.7);
+}
+
+.logo {
+  font-size: 30px;
+  font-weight: bold;
+  color: #ff0000;
+  text-shadow: 0 0 10px #ff0000, 0 0 20px #ff0000;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+  padding: 0;
+}
+
+nav ul li a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 16px;
+  transition: color 0.3s ease;
+}
+
+nav ul li a:hover {
+  color: #ff0000;
+  text-shadow: 0 0 10px #ff0000;
+}
+
+/* Banner */
+.banner {
+  background-image: url("cyberpunk-bg.jpg"); /* Add a red and black cyberpunk background */
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.content {
+  text-align: center;
+  max-width: 800px;
+}
+
+h1 {
+  font-size: 48px;
+  color: #ff0000;
+  text-shadow: 0 0 20px #ff0000, 0 0 40px #ff0000;
+}
+
+p {
+  font-size: 18px;
+  line-height: 1.5;
+}
+
+/* Highlighted Text */
+.highlight {
+  color: #ff0000;
+  font-weight: bold;
+}
+
+/* Advice Box */
+.advice-box {
+  margin-top: 30px;
+  padding: 20px;
+  background-color: rgba(20, 20, 20, 0.9);
+  border: 2px solid #ff0000;
+  box-shadow: 0 0 20px #ff0000;
+  border-radius: 8px;
+}
+
+#advice-input {
+  width: 100%;
+  height: 120px;
+  background-color: #111;
+  color: #fff;
+  border: 1px solid #ff0000;
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 5px;
+  outline: none;
+  box-shadow: 0 0 10px #ff0000;
+}
+
+#advice-input:focus {
+  border-color: #ff0000;
+  box-shadow: 0 0 20px #ff0000;
+}
+
+button {
+  margin-top: 10px;
+  padding: 10px 20px;
+  background-color: #ff0000;
+  color: #000;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 18px;
+  transition: background-color 0.3s ease;
+  box-shadow: 0 0 10px #ff0000;
+}
+
+button:hover {
+  background-color: #cc0000;
+  box-shadow: 0 0 20px #ff0000;
+}
+
+#success-message {
+  margin-top: 10px;
+  font-size: 16px;
+  color: #00ff00;
+  transition: opacity 0.5s ease;
+}
+
+.hidden {
+  opacity: 0;
+  visibility: hidden;
+}
