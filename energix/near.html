@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Find Nearby 7-Elevens</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #000;
+        color: #fff;
+        margin: 0;
+        padding: 20px;
+      }
+      .container {
+        max-width: 800px;
+        margin: 0 auto;
+      }
+      #map {
+        height: 400px;
+        width: 100%;
+        margin-top: 20px;
+        border: 2px solid #ff0000;
+        border-radius: 10px;
+      }
+      input[type="text"] {
+        width: 300px;
+        padding: 10px;
+        margin: 10px;
+        background: #222;
+        border: 1px solid #ff0000;
+        color: #fff;
+      }
+      button {
+        background: #ff0000;
+        color: #fff;
+        border: none;
+        padding: 10px 20px;
+        cursor: pointer;
+      }
+      .results {
+        margin-top: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Find Nearby 7-Elevens</h1>
+      <input type="text" id="address" placeholder="Enter your address" />
+      <button onclick="find7Elevens()">Search</button>
+      <div id="map"></div>
+      <div class="results" id="results"></div>
+    </div>
+
+    <!-- Google Maps API -->
+    <script
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCVglSwqr_ZfMTWUs3o5Z7IRmuru0Ij-ls&libraries=places&callback=initMap"
+      async
+      defer
+    ></script>
+
+    <script>
+      let map;
+      let service;
+      let infowindow;
+
+      function initMap() {
+        map = new google.maps.Map(document.getElementById("map"), {
+          center: { lat: 53.5461, lng: -113.4938 }, // Default to Edmonton
+          zoom: 12,
+        });
+        infowindow = new google.maps.InfoWindow();
+      }
+
+      function find7Elevens() {
+        const address = document.getElementById("address").value;
+        const geocoder = new google.maps.Geocoder();
+
+        geocoder.geocode({ address: address }, (results, status) => {
+          if (status === "OK") {
+            const location = results[0].geometry.location;
+            map.setCenter(location);
+
+            // Clear previous markers
+            if (service) service = null;
+
+            service = new google.maps.places.PlacesService(map);
+            service.nearbySearch(
+              {
+                location: location,
+                radius: 5000, // 5km radius
+                keyword: "7-Eleven",
+              },
+              (results, status) => {
+                if (status === "OK") {
+                  let content = "<h2>Nearby 7-Elevens:</h2>";
+                  results.forEach((place, i) => {
+                    createMarker(place);
+                    content += `
+                  <div class="store">
+                    <h3>${i + 1}. ${place.name}</h3>
+                    <p>Address: ${place.vicinity}</p>
+                    ${place.rating ? `<p>Rating: ${place.rating}/5</p>` : ""}
+                  </div>
+                `;
+                  });
+                  document.getElementById("results").innerHTML = content;
+                } else {
+                  document.getElementById("results").innerHTML =
+                    "No 7-Elevens found nearby.";
+                }
+              }
+            );
+          } else {
+            alert("Address not found: " + status);
+          }
+        });
+      }
+
+      function createMarker(place) {
+        new google.maps.Marker({
+          map: map,
+          position: place.geometry.location,
+          title: place.name,
+        });
+      }
+    </script>
+  </body>
+</html>
