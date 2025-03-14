@@ -8,16 +8,18 @@
   </head>
   <body>
     <header>
-      <div class="logo">Energix</div>
-      <nav>
-        <ul>
-          <li><a href="index.html">Home</a></li>
-          <li><a href="product.html">Product</a></li>
-          <li><a href="advise.html">Advise</a></li>
-          <li><a href="order.html">Order</a></li>
-          <li><a href="near.html">Near by</a></li>
-        </ul>
-      </nav>
+      <div class="container">
+        <div class="logo">Energix</div>
+        <nav>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="product.html">Product</a></li>
+            <li><a href="advise.html">Advise</a></li>
+            <li><a href="order.html">Order</a></li>
+            <li><a href="near.html">Near by</a></li>
+          </ul>
+        </nav>
+      </div>
     </header>
 
     <div class="banner">
@@ -42,6 +44,18 @@
       </div>
     </div>
 
-    <script src="script2.js"></script>
+    <script>
+      function sendAdvice() {
+        const advice = document.getElementById("advice-input").value.trim();
+        if (advice) {
+          const successMessage = document.getElementById("success-message");
+          successMessage.classList.add("show");
+          setTimeout(() => {
+            successMessage.classList.remove("show");
+          }, 3000);
+          document.getElementById("advice-input").value = "";
+        }
+      }
+    </script>
   </body>
 </html>
